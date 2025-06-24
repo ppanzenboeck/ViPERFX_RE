@@ -4,12 +4,21 @@ This is a reverse-engineering project aimed to make ViPER4Android more easy to a
 Some QOL changes have been made, such as processing audio as float32, removing unused code, using more modern libraries, etc.
 To view the progress, see [Issue #2](https://github.com/AndroidAudioMods/ViPERFX_RE/issues/2)
 
+# Building on Arch Linux using ninja
+
+- Install the NDK, CMake and Make. -> use AUR helper such as `yay` or `paru` -> `yay -S android-ndk` -> ndkroot = /opt/android-ndk; arm64 (most phones) = arm64-v8a
+- Run `cmake -DCMAKE_TOOLCHAIN_FILE=/opt/android-ndk/build/cmake/android.toolchain.cmake -DANDROID_ABI=arm64-v8a -G Ninja .` //maybe also: -DANDROID_ARM_NEON=TRUE or =true
+- Run `ninja`
+- You should now find a `libv4afx_r.so` file in your project root.
+
+
 # Building
 
 - Install the NDK, CMake and Make.
 - Run `cmake . -DCMAKE_TOOLCHAIN_FILE=<NDKROOT>/build/cmake/android.toolchain.cmake -DANDROID_ABI=<ABI>` where <NDKROOT> is where you installed the NDK and <ABI> is the target ABI to build for.
 - Run `make`
 - You should now find a `libv4afx_r.so` file in your project root.
+
 
 # CLion
 
